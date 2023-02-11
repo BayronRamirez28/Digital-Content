@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" th:href="@{/imgs/LOGO1.png}" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+</head>
+<body>
+
+	<!-- HEADER -->
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+	
+	<div class="container-fluid">
+		<div class="row m-1">
+			<div class="col-sm-10">
+				<div class="row border rounded">
+					<div class="col-3">
+						<img th:src="@{ss}">
+					</div>
+					<div class="col-5">
+						<div>
+							<a>
+								<b th:text="${producto.nombre}"></b>
+							</a>
+						</div>
+					</div>
+					<div class="col-2">
+						<div>
+							<span>X</span>
+							<span>$[[${producto.precio}]]</span>
+						</div>
+					</div>
+					<div class="col-2">
+						<div>
+							<span>X</span>
+							<div th:replace="controldecantidad :: control_cantidad(1, ${producto.idProducto})">Cantidad</div>
+							<button class="btn btn-danger" id="buttonAddCart">Agregar al Carrito<i class="fa-solid fa-cart-shopping"></i></button>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- FOOTER -->
+
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+
+	<div th:replace="~{layouts/Modals :: standard_modal}">Modal
+		estandarte</div>
+
+	<!-- Script Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/addCar.js}"></script>
+	<!-- DataTables -->
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript" th:src="@{/barrioJS/barrio.js}"></script>
+	<script type="text/javascript" th:src="@{/controldecantidad.js}"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" href="/imgs/LOGO1.png" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+<!-- DataTables con BootStrap -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css}" />
+</head>
+<body>
+<body>
+
+	<!-- HEADER -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="Barrio.html"> <img
+				src="/imgs/LOGO1.png" alt="" width="20" height="24"
+				class="d-inline-block align-text-top" /> Digital Content
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item mx-2"><a class="nav-link active"
+						aria-current="page" style="padding-top: 0px; padding-bottom: 5px">
+							<i class="fa-solid fa-house"></i>
+					</a></li>
+					<li class="nav-item mx-2"><a class="nav-link"
+						style="padding-top: 0px; padding-bottom: 5px"> <i
+							class="fa-sharp fa-solid fa-cart-shopping"></i>
+					</a></li>
+					<li class="nav-item mx-2"><a class="nav-link"
+						style="padding-top: 0px; padding-bottom: 5px"> Cerrar Sesión </a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<div class="container my-4">
+		<div class="row justify-content-center">
+			<form class="col-md-6 my-4 bg-light" th:action="@{/registro/actualizar}" th:object="${usuario}" method="POST">
+				<figure class="text-center">
+                        <blockquote class="blockquote">
+                            <p>Actualizar</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            Ingresa los nuevos datos <cite title="Source Title">para actualizar</cite>
+                        </figcaption>
+                </figure>
+				<input type="hidden" th:field="*{idUsuario}" th:value="${usuario.idUsuario}">
+				<label>Nombres: </label> 
+				<input type="text" name="nombres" th:field="*{nombres}" class="form-control" placeholder="Ingrese sus nombres" required>
+				<br>
+				<label>Apellidos: </label> 
+				<input type="text" name="apellidos" th:field="*{apellidos}" class="form-control" placeholder="Ingrese sus apellidos" required>
+				<br>
+				<label>Dirección: </label> 
+				<input type="text" name="direccion" th:field="*{direccion}" class="form-control" placeholder="Ingrese su dirrección" required>
+				<br>
+				<label>Barrio:</label>
+				<select class="form-select" th:field="*{id_Barrio_fk}" required>
+				<th:block th:each="barrio : ${lstBar}">
+						<option th:text="${barrio.nombre}" th:value="${barrio.idBarrio}"></option>
+					</th:block>	
+				</select>
+				<br>
+				<label>Telefono: </label> 
+				<input type="text" name="telefono" th:field="*{telefono}" class="form-control" placeholder="Ingrese su teléfono" required>
+				<br>
+				<label>Correo: </label> 
+				<input type="text" name="correo" th:field="*{correo}" class="form-control" placeholder="Ingrese su correo" required>
+				<br>
+				<input type="hidden" name="contraseña" th:field="*{contrasena}" class="form-control" required>
+				<input type="hidden" name="estado" th:field="*{estado}" class="form-control"  required>
+				<input type="hidden" name="numDocumento" th:field="*{numDocumento}" class="form-control"required>
+				<input type="hidden" name="tipoDocumento" th:field="*{tipoDocumento}" class="form-control" required>
+				
+				<br>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-danger">Guardar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<footer class="py-3 my-4" id="footerC">
+
+		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Home</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Features</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Pricing</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">FAQs</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">About</a></li>
+		</ul>
+		<p class="text-center text-muted">
+			<img src="/imgs/LOGO1.png" alt="alt" width="20" height="24" />
+			&copy; 2022 Digital Content, designed by <span>DonBrayaan</span>
+		</p>
+	</footer>
+
+	<!-- Script Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- DataTables -->
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript" th:src="@{/productoJS/producto.js}"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous" />
+<!-- Logo Pestaña -->
+<link rel="icon" href="/imgs/LOGO1.png" />
+</head>
+<body>
+
+	<!-- HEADER -->
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+
+	<!-- FORM -->
+
+	<div class="container my-4">
+		<div class="row justify-content-center">
+			<div th:if=${param.exito}>
+				<div class="alert alert-success">Se ha regitrado con exito</div>
+			</div>
+
+			<form class="col-md-6 my-4 bg-light" th:action="@{/registro}"
+				th:object="${usuario}" method="post">
+				<figure class="text-center">
+					<blockquote class="blockquote">
+						<p>Registro</p>
+					</blockquote>
+					<figcaption class="blockquote-footer">
+						Ingresa los datos <cite title="Source Title">para crear un
+							usuario</cite>
+					</figcaption>
+				</figure>
+				<label>*Nombres: </label> <input type="text" name="nombre"
+					th:field="*{nombres}" class="form-control"
+					placeholder="Ingrese Nombres" autofocus="autofocus" required>
+				<br> <label>*Apellidos: </label> <input type="text"
+					name="apellido" th:field="*{apellidos}" class="form-control"
+					placeholder="Ingrese Apellido" required> <br> <label>*Tipo
+					Documento:</label> <select class="form-select" th:field="*{tipoDocumento}"
+					required>
+					<option value="CC">Cedula Ciudadania</option>
+					<option value="TI">Tarjeta de Identidad</option>
+					<option value="CE">Cedula Extranjeria</option>
+				</select> <br> <label>*Numero Documento: </label> <input type="number"
+					name="ndocumento" th:field="*{numDocumento}" class="form-control"
+					placeholder="Ingrese numero documento" required> <br>
+				<label>*Direccion: </label> <input type="text" name="direccion"
+					th:field="*{direccion}" class="form-control"
+					placeholder="Ingrese Direccion" required> <br> <label>Barrio:</label>
+				<select class="form-select" th:field="*{id_Barrio_fk}">
+					<option value="">seleccione un barrio (opcional)</option>
+					<th:block th:each="barrio : ${barrio}">
+						<option th:text="${barrio.nombre}" th:value="${barrio.idBarrio}"></option>
+					</th:block>
+				</select> <br> <label>*Telefono: </label> <input type="number"
+					name="ndocumento" th:field="*{telefono}" class="form-control"
+					placeholder="Ingrese numero telefono" required> <br> <label>*Correo:
+				</label> <input type="email" name="correo" th:field="*{correo}"
+					class="form-control" placeholder="Ingrese su correo" required>
+				<br> <label>*Contraseña: </label> <input type="password"
+					name="pass" th:field="*{contrasena}" class="form-control"
+					placeholder="Ingrese una contraseña" required><br>
+				<div class="box-footer text-center">
+					<span>¿Ya tienes una cuenta? click </span><a th:href="@{/login}">aquí</a>
+					<br> <br>
+					<button type="submit" class="btn btn-danger">Registrar</button>
+					<br> <br>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+	
+	<!-- Script Bootstrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/e4804d9539.js"
+		crossorigin="anonymous"></script>
+</body>
+</html>
+</body>
+</html>

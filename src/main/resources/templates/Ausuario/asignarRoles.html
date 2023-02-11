@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" href="/imgs/LOGO1.png" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+<!-- DataTables con BootStrap -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css}" />
+</head>
+<body>
+
+	<!-- HEADER -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="Barrio.html"> <img
+				src="/imgs/LOGO1.png" alt="" width="20" height="24"
+				class="d-inline-block align-text-top" /> Digital Content
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item mx-2"><a class="nav-link active"
+						aria-current="page" style="padding-top: 0px; padding-bottom: 5px">
+							<i class="fa-solid fa-house"></i>
+					</a></li>
+					<li class="nav-item mx-2"><a class="nav-link"
+						style="padding-top: 0px; padding-bottom: 5px"> <i
+							class="fa-sharp fa-solid fa-cart-shopping"></i>
+					</a></li>
+					<li class="nav-item mx-2"><a class="nav-link"
+						style="padding-top: 0px; padding-bottom: 5px"> Iniciar sesión
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- SIDEBAR -->
+
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+				<div
+					class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+					<a href="/"
+						class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<span class="fs-5 d-none d-sm-inline">Opciones</span>
+					</a>
+					<ul
+						class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+						id="menu">
+						<li class="nav-item"><a th:href="@{/admin}"
+							class="nav-link align-middle px-0"> <i class="fs-4 bi-house"></i>
+								<span class="ms-1 d-none d-sm-inline text-light">Home</span>
+						</a></li>
+						<li><a href="#submenu1" data-bs-toggle="collapse"
+							class="nav-link px-0 align-middle"> <i
+								class="fs-4 bi-speedometer2"></i> <span
+								class="ms-1 d-none d-sm-inline text-light">Productos</span>
+						</a>
+							<ul class="collapse show nav flex-column ms-1" id="submenu1"
+								data-bs-parent="#menu">
+								<li class="w-100"><a th:href="@{/admin/producto}"
+									class="nav-link px-0"> <span class="d-none d-sm-inline">-Listado</span></a>
+								</li>
+								<li class="w-100"><a th:href="@{/admin/color}"
+									class="nav-link px-0"> <span class="d-none d-sm-inline">-Color</span></a>
+								</li>
+								<li><a th:href="@{/admin/talla}" class="nav-link px-0">
+										<span class="d-none d-sm-inline">-Talla</span>
+								</a></li>
+								<li><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">-Genero</span></a></li>
+								<li><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">-Categoria</span></a></li>
+							</ul></li>
+						<li><a href="#" class="nav-link px-0 align-middle"> <i
+								class="fs-4 bi-table"></i> <span
+								class="ms-1 d-none d-sm-inline text-light">Orders</span></a></li>
+						<li><a href="#submenu2" data-bs-toggle="collapse"
+							class="nav-link px-0 align-middle "> <i
+								class="fs-4 bi-bootstrap"></i> <span
+								class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+							<ul class="collapse nav flex-column ms-1" id="submenu2"
+								data-bs-parent="#menu">
+								<li class="w-100"><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">Item</span> 1
+								</a></li>
+								<li><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">Item</span> 2
+								</a></li>
+							</ul></li>
+						<li><a href="#submenu3" data-bs-toggle="collapse"
+							class="nav-link px-0 align-middle"> <i class="fs-4 bi-grid"></i>
+								<span class="ms-1 d-none d-sm-inline">Products</span>
+						</a>
+							<ul class="collapse nav flex-column ms-1" id="submenu3"
+								data-bs-parent="#menu">
+								<li class="w-100"><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">Product</span> 1
+								</a></li>
+								<li><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">Product</span> 2
+								</a></li>
+								<li><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">Product</span> 3
+								</a></li>
+								<li><a href="#" class="nav-link px-0"> <span
+										class="d-none d-sm-inline">Product</span> 4
+								</a></li>
+							</ul></li>
+						<li><a href="#" class="nav-link px-0 align-middle"> <i
+								class="fs-4 bi-people"></i> <span
+								class="ms-1 d-none d-sm-inline">Customers</span>
+						</a></li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+			<div class="col py-3">
+				<div class="container my-4">
+					<div class="row justify-content-center">
+						<form class="col-md-6 my-4 bg-light text-center"
+							th:action="@{/admin/usuario}" th:object="${usuario}"
+							method="POST">
+							<figure class="text-center">
+								<blockquote class="blockquote">
+									<p>Asignacion de Roles</p>
+								</blockquote>
+								<figcaption class="blockquote-footer">
+									Selecciona los nuevos permiso <cite title="Source Title">que
+										va a tener el usuario</cite>
+										<th:block th:text="${usuario.nombres}"></th:block>
+								</figcaption>
+							</figure>
+							<label>Roles:</label><br>
+							<br>
+							<th:block th:each="rol : ${lstRol}">
+								<input class="check" th:field="*{roles}" type="checkbox" th:value="${rol.idRol}"
+									th:text="${rol.nombre}">
+							</th:block>
+							<input type="hidden" th:field="*{idUsuario}" th:value="${usuario.idUsuario}">
+							<input type="hidden" th:field="*{apellidos}" th:value="${usuario.apellidos}">
+							<input type="hidden" th:field="*{contrasena}" th:value="${usuario.contrasena}">
+							<input type="hidden" th:field="*{correo}" th:value="${usuario.correo}">
+							<input type="hidden" th:field="*{direccion}" th:value="${usuario.direccion}">
+							<input type="hidden" th:field="*{nombres}" th:value="${usuario.nombres}">
+							<input type="hidden" th:field="*{numDocumento}" th:value="${usuario.numDocumento}">
+							<input type="hidden" th:field="*{telefono}" th:value="${usuario.telefono}">
+							<input type="hidden" th:field="*{tipoDocumento}" th:value="${usuario.contrasena}">
+							<input type="hidden" th:field="*{id_Barrio_fk}" th:value="${usuario.id_Barrio_fk}">
+							
+							<br><br>
+							<button class="btn btn-danger" onclick="confirm('Se le otorgaran permisos a este Usuario, ¿¡¡ESTA SEGURO!!?')">Actualizar</button>
+							<br><br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

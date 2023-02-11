@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- HEADER -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+		th:fragment="header">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}"> <img
+				src="/imgs/LOGO1.png" alt="" width="20" height="24"
+				class="d-inline-block align-text-top" /> Digital Content
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item mx-2"><th:block
+							sec:authorize="isAuthenticated()">
+							<a class="nav-link" aria-current="page"
+								style="padding-top: 0px; padding-bottom: 5px"> <i
+								class="fa-solid fa-user"></i>
+							</a>
+						</th:block></li>
+					<li class="nav-item mx-2"><a class="nav-link" th:href="@{/carrito}"
+						style="padding-top: 0px; padding-bottom: 5px"> <i
+							class="fa-sharp fa-solid fa-cart-shopping"></i>
+					</a></li>
+					<li class="nav-item mx-2"><th:block
+							sec:authorize="!isAuthenticated()">
+							<a class="nav-link" th:href="@{/login}"
+								style="padding-top: 0px; padding-bottom: 5px"> Iniciar
+								sesión </a>
+						</th:block> <th:block sec:authorize="isAuthenticated()">
+							<a class="nav-link" th:href="@{/logout}"
+								style="padding-top: 0px; padding-bottom: 5px"> Cerrar sesión
+							</a>
+						</th:block></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</body>
+</html>

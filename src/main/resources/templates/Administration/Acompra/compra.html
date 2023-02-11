@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" th:href="@{/imgs/LOGO1.png}" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+<!-- DataTables con BootStrap -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css}" />
+</head>
+<body>
+	<!-- HEADER -->
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+
+	<!-- SIDEBAR -->
+
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div th:replace="~{layouts/Adminmenu :: menu}">Menú</div>
+			<div class="col py-3" style="width: 10px">
+				<h3 align="center">Compras</h3>
+				<!-- BUTTON -->
+
+				<a th:href="@{/admin/compra/nuevoC}" class="btn btn-outline-success"
+					id="btnC">Ingresar compra</a> <br>
+				<br>
+				<!-- TABLE -->
+
+				<div class="container" id="scroll">
+					<div class="row">
+						<table id="exampleS" class="table table-dark table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Producto</th>
+									<th>Cantidad</th>
+									<th>Precio Uni</th>
+									<th>Fecha</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="compra : ${listC}">
+									<td th:text="${compra.idCompra}"></td>
+									<td th:text="${compra.id_Producto_fk.nombre}"></td>
+									<td th:text="${compra.cantidad}"></td>
+									<td th:text="${compra.precioU}"></td>
+									<td th:text="${compra.fecha}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<input type="hidden" id="txt_id">
+
+	<style>
+	#scroll {
+	overflow: auto;
+	width: 80%;
+	}
+	</style>
+	
+	<!-- FOOTER -->
+
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+
+	<!-- Script Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- DataTables -->
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript" th:src="@{/compraJS/compra.js}"></script>
+
+</body>
+</html>

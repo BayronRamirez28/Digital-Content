@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="control_cantidad(cantidadV, idProducto)">
+		<nav>
+			<ul class="pagination">
+				<li class="page-item">
+					<a class="page-link minusButton" href="" th:pid="${idProducto}"><b>-</b></a>
+				</li>
+				<li class="page-item">
+					<input type="text" th:value="${cantidadV}" class="form-control text-center"
+					 onkeydown="return false;" style="max-width: 55px"
+					  th:id="'cantidad' + ${producto.idProducto}"/>
+				</li>
+				<li class="page-item">
+					<a class="page-link plusButton" href="" th:pid="${idProducto}"><b>+</b></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</body>
+</html>

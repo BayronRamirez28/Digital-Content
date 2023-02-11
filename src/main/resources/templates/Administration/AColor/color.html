@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" href="/imgs/LOGO1.png" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+<!-- DataTables con BootStrap -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css}" />
+</head>
+<body>
+	<!-- HEADER -->
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+
+	<!-- SIDEBAR -->
+
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div th:replace="~{layouts/Adminmenu :: menu}">Menú</div>
+			<div class="col py-3" style="width: 10px">
+				<h3 align="center">Colores</h3>
+				<!-- BUTTON -->
+
+				<a th:href="@{/admin/color/nuevoC}" class="btn btn-outline-success"
+					id="btnC">Crear</a>
+				<!-- TABLE -->
+
+				<div class="container" id="scroll">
+					<div class="row">
+						<table id="example" class="table table-dark table-striped">
+							<thead class="">
+								<tr>
+									<th>#</th>
+									<th>Nombre</th>
+									<th>Estado</th>
+									<th>Options</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="color : ${listaC}">
+									<td th:text="${color.idColor}"></td>
+									<td th:text="${color.nombreColor}"></td>
+									<td th:text="${color.estado}"></td>
+									<td><a
+										th:href="@{'/admin/color/editar'+'/'+ ${color.idColor}}"
+										class="btn btn-success">Editar</a>
+
+										<button th:onclick="@{'confirmar('+ ${color.idColor} +')'}"
+											class="btn btn-danger" data-bs-toggle="modal"
+											data-bs-target="#ModalC">Eliminar</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<input type="hidden" id="txt_id">
+	
+	<style>
+	#scroll {
+	overflow: auto;
+	width: 80%;
+	}
+	</style>
+
+	<!-- Modal -->
+
+	<div class="modal fade" id="ModalC" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background: #A0D8FF">
+					<i class="fa-solid fa-triangle-exclamation"></i>
+					<h5 class="modal-title" id="exampleModalLabel">ALERTA!!</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">¿Esta seguro de eliminar este Color?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary" onclick="eliminar()">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+
+
+	<!-- Script Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- DataTables -->
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/jquery.dataTables.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript" src="/colorJS/color.js"></script>
+</body>
+</html>

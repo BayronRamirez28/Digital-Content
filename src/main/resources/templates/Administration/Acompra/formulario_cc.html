@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" th:href="@{/imgs/LOGO1.png}" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+</head>
+<body>
+	<!-- HEADER -->
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+	
+	<!-- FORM -->
+
+	<div class="container my-4">
+		<div class="row justify-content-center">
+			<form class="col-md-6 my-4 bg-light" th:action="@{/admin/compra}" th:object="${compraN}" method="POST">
+				<figure class="text-center">
+                        <blockquote class="blockquote">
+                            <p>Registrar una nueva compra</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            Ingresa los datos <cite title="Source Title">para crear un nuevo registro</cite>
+                        </figcaption>
+                    </figure>
+                    <hr>
+				<label>Producto: </label>
+				<select class="form-select" th:field="*{id_Producto_fk}" required>
+					<th:block th:each="pro : ${lstPro}">
+						<option th:text="${pro.nombre}" th:value="${pro.idProducto}"></option>
+					</th:block>	
+				</select>
+				<br>
+				<p>¿No existen registros del producto? crealo <a th:href="@{/admin/producto/nuevoP}">aquí</a></p>
+				<hr>
+				<br> <label>Cantidad: </label> 
+				<input type="number" name="cantidad" th:field="*{cantidad}" class="form-control" placeholder="Ingrese la cantidad" required>
+				<br> <label>Precio: </label> 
+				<input type="number" name="precio" th:field="*{precioU}" class="form-control" placeholder="Ingrese el peso Unitario" required>
+				<br>
+				<label>Fecha: </label> 
+				<input type="date" th:field="*{fecha}" class="form-control">
+				<br>
+				<div class="box-footer">
+					<button class="btn btn-danger">Crear</button>
+				</div>
+				<br>
+			</form>
+		</div>
+	</div>
+	
+
+	<!-- FOOTER -->
+
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+
+</body>
+</html>

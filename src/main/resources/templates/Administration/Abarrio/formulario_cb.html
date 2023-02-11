@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous" />
+<!-- Logo Pestaña -->
+<link rel="icon" href="/imgs/LOGO1.png" />
+</head>
+<body>
+
+	<!-- HEADER -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="Barrio.html"> <img
+				src="/imgs/LOGO1.png" alt="" width="20" height="24"
+				class="d-inline-block align-text-top" /> Digital Content
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item mx-2"><a class="nav-link active"
+						aria-current="page" style="padding-top: 0px; padding-bottom: 5px">
+							<i class="fa-solid fa-house"></i>
+					</a></li>
+					<li class="nav-item mx-2"><a class="nav-link"
+						style="padding-top: 0px; padding-bottom: 5px"> <i
+							class="fa-sharp fa-solid fa-cart-shopping"></i>
+					</a></li>
+					<li class="nav-item mx-2"><a class="nav-link"
+						style="padding-top: 0px; padding-bottom: 5px"> Iniciar sesión
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- FORM -->
+
+	<div class="container my-4">
+		<div class="row justify-content-center">
+			<form class="col-md-6 my-4 bg-light" th:action="@{/admin/barrio}" th:object="${barrioN}" method="POST">
+				<figure class="text-center">
+                        <blockquote class="blockquote">
+                            <p>Crear Barrio</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            Ingresa los datos <cite title="Source Title">para crear un nuevo barrio</cite>
+                        </figcaption>
+                    </figure>
+				<label>Nombre: </label> 
+				<input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Ingrese Nombre" required>
+				<br>
+				<label>Estado:</label>
+				<select class="form-select" th:field="*{estado}" required>
+				 	<option value="Activo">Activo</option>
+				 	<option value="Inactivo">Inactivo</option>
+				</select>
+				<br>
+				<label>Localidad:</label>
+				<select class="form-select" th:field="*{id_localidad_fk}" required>
+					<th:block th:each="localidad : ${lstLoc}">
+						<option th:text="${localidad.nombre}" th:value="${localidad.idLocalidad}"></option>
+					</th:block>	
+				</select>
+				<br>
+				<div class="box-footer">
+					<button class="btn btn-danger">Registrar</button>
+				</div>
+				<br>
+			</form>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+
+	<footer class="py-3 my-4" id="footerC">
+
+		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Home</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Features</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Pricing</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">FAQs</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">About</a></li>
+		</ul>
+		<p class="text-center text-muted">
+			<img src="/imgs/LOGO1.png" alt="alt" width="20" height="24" />
+			&copy; 2022 Digital Content, designed by <span>DonBrayaan</span>
+		</p>
+	</footer>
+
+	<!-- Script Bootstrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/e4804d9539.js"
+		crossorigin="anonymous"></script>
+</body>
+</html>
+</body>
+</html>

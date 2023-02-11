@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		
+	<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark"
+		th:fragment="menu2">
+		<div
+			class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+			<a href="/"
+				class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+				<span class="fs-5 d-none d-sm-inline">Opciones</span>
+			</a>
+			<ul
+				class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+				id="menu">
+				<li class="nav-item"><a th:href="@{/admin}"
+					class="nav-link align-middle px-0"> <i class="fs-4 bi-house"></i>
+						<span class="ms-1 d-none d-sm-inline text-light">Home</span>
+				</a></li>
+				<li><a href="#submenu1" data-bs-toggle="collapse"
+					class="nav-link px-0 align-middle"> <i
+						class="fs-4 bi-speedometer2"></i> <span
+						class="ms-1 d-none d-sm-inline text-light">Productos</span>
+				</a>
+					<ul class="collapse nav flex-column ms-1" id="submenu1"
+						data-bs-parent="#menu">
+						<li class="w-100"><a th:href="@{/admin/producto}"
+							class="nav-link px-0"> <span class="d-none d-sm-inline">-Listado</span></a>
+						</li>
+						<li class="w-100"><a th:href="@{/admin/color}"
+							class="nav-link px-0"> <span class="d-none d-sm-inline">-Color</span></a>
+						</li>
+						<li><a th:href="@{/admin/talla}" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">-Talla</span></a></li>
+						<li><a href="#" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">-Genero</span></a></li>
+						<li><a href="#" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">-Categoria</span></a></li>
+					</ul></li>
+				<li><a href="#" class="nav-link px-0 align-middle"> <i
+						class="fs-4 bi-table"></i> <span
+						class="ms-1 d-none d-sm-inline text-light">Orders</span></a></li>
+				<li><a href="#submenu2" data-bs-toggle="collapse"
+					class="nav-link px-0 align-middle "> <i
+						class="fs-4 bi-bootstrap"></i> <span
+						class="ms-1 d-none d-sm-inline text-light">Usuarios</span></a>
+					<ul class="collapse nav flex-column ms-1" id="submenu2"
+						data-bs-parent="#menu">
+						<li class="w-100"><a th:href="@{'/admin/usuario'}"
+							class="nav-link px-0"> <span class="d-none d-sm-inline">-Listado</span></a>
+						</li>
+					</ul></li>
+				<li><a href="#submenu3" data-bs-toggle="collapse"
+					class="nav-link px-0 align-middle"> <i class="fs-4 bi-grid"></i>
+						<span class="ms-1 d-none d-sm-inline text-light">Products</span>
+				</a>
+					<ul class="collapse nav flex-column ms-1" id="submenu3"
+						data-bs-parent="#menu">
+						<li class="w-100"><a href="#" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">Product</span> 1
+						</a></li>
+						<li><a href="#" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">Product</span> 2
+						</a></li>
+						<li><a href="#" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">Product</span> 3
+						</a></li>
+						<li><a href="#" class="nav-link px-0"> <span
+								class="d-none d-sm-inline">Product</span> 4
+						</a></li>
+					</ul></li>
+				<li><a href="#" class="nav-link px-0 align-middle"> <i
+						class="fs-4 bi-people"></i> <span
+						class="ms-1 d-none d-sm-inline text-light">Customers</span>
+				</a></li>
+			</ul>
+			<hr>
+		</div>
+	</div>
+	
+	<div th:fragment="menu" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-secondary" style="width: 180px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <span class="fs-4">OPCIONES</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a th:href="@{/admin}" class="nav-link active" aria-current="page">
+          Home
+        </a>
+      </li>
+      <li>
+        <a class="align-items-center nav-link text-white" role="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1">
+          Productos
+        </a>
+        <div class="collapse" id="dashboard-collapse1">
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/admin/producto}" class="link-dark text-decoration-none rounded">- Listado</a></li>
+          </ul>
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/admin/categoria}" class="link-dark text-decoration-none rounded">- Categorias</a></li>
+          </ul>
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/admin/genero}" class="link-dark text-decoration-none rounded">- Generos</a></li>
+          </ul>
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/admin/color}" class="link-dark text-decoration-none rounded">- Colores</a></li>
+          </ul>
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/admin/talla}" class="link-dark text-decoration-none rounded">- Talla</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a class="align-items-center nav-link text-white" role="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse">
+          Entregas
+        </a>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/admin/barrio}" class="link-primary text-decoration-none rounded">- Barrios</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          Orders
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          Products
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          Customers
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

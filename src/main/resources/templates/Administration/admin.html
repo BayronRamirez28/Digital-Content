@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css">
+
+<!-- Logo Pestaña -->
+<link rel="icon" href="/imgs/LOGO1.png" />
+<!-- Font Awesome -->
+<link href="fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="fontawesome/css/brands.min.css" rel="stylesheet">
+<link href="fontawesome/css/solid.min.css" rel="stylesheet">
+<!-- DataTables con BootStrap -->
+<link rel="stylesheet" type="text/css"
+	href="datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css" />
+</head>
+<body>
+
+	<!-- HEADER -->
+	
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+	
+	<!-- SIDEBAR -->
+
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div th:replace="~{layouts/Adminmenu :: menu}">Menú</div>
+			<div class="col py-3">
+				<table class="table table-dark">
+					<thead>
+						<tr>
+							<th>HOLA</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>hfjksjdhnm</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+
+	<!-- Script Bootstrap -->
+	<script src="/bootstrap/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" src="JQuery/jquery-3.6.1.min.js"></script>
+	<!-- DataTables -->
+	<script type="text/javascript"
+		src="datatables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="datatables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript" src="proveedorJS/proveedor.js"></script>
+</body>
+</html>
