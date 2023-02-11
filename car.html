@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<title>Digital Content</title>
+
+<!-- Bootstrap -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css">
+<!-- Logo Pestaña -->
+<link rel="icon" th:href="@{/imgs/LOGO1.png}" />
+<!-- Font Awesome -->
+<link th:href="@{/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/brands.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/solid.min.css}" rel="stylesheet">
+<!-- DataTables con BootStrap -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/datatables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css}" />
+</head>
+<body>
+	<!-- HEADER -->
+
+	<nav th:replace="~{layouts/header :: header}">Header</nav>
+
+
+	<div class="row m-1">
+		<div class="col-sm-8">
+			<th:block th:each="item, status : ${cartItems}">
+				<div class="row border rounded" th:with="product = ${item.product}"
+					th:id="'row' + ${status.count}">
+					<div class="col-1">
+						<div>[[${status.count}]]</div>
+						<div><a class="fa-regular fa-trash link-remove" 
+						th:rowNumber="${status.count}"
+						data-bs-toggle="modal" data-bs-target="#myModal"
+						style="text-decoration: none; color: grey;" th:href="@{'/carrito/remove/' + ${product.idProducto}}"></a></div>
+					</div>
+					<div class="col-3">
+						<img th:src="@{ss}">
+					</div>
+					<div class="col-6">
+						<div>
+							<a>
+								<b>[[${product.nombre}]]</b>
+							</a>
+						</div>
+						<div th:replace="controldecantidad :: control_cantidad(${item.cantidad}, ${item.product.idProducto})">Cantidad</div>
+						<div>
+							<span>X</span>
+							<span>$[[${product.precio}]]</span>
+						</div>
+						<div>
+							<span>=</span><span>$</span>
+							<span th:id="'subtotal' + ${product.idProducto}" 
+								class="h4 productSubtotal">[[${item.subtotal}]]</span>
+						</div>
+					</div>
+				</div>
+				<div class="row m-1">&nbsp;</div>
+			</th:block>
+		</div>
+		<div class="col-sm-4" th:unless="${#lists.isEmpty(cartItems)}">
+			<div>
+				<span class="h3">Estimado Total:</span>
+			</div>
+			<div class="mt-2">
+				<span class="h2" id="totalEstimado"></span>
+			</div>
+			<div class="mt-2">
+				<button class="btn btn-outline-danger p-3 mt-2">Ordenar</button>
+			</div>
+		</div>
+		<div th:if="${#lists.isEmpty(cartItems)}">
+			<h2>El carrito se encuentra vacio :D</h2>
+		</div>
+	</div>
+	<script type="text/javascript">
+		
+		contextPath = "[[@{/}]]";
+		var crsfHeaderName = "[[${_csrf.headerName}]]";
+		var crsfValue = "[[${_csrf.token}]]";
+		
+	</script>
+	<div th:replace="~{layouts/Modals :: standard_modal2}">Modal
+		estandarte</div>
+<!-- Script Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
+<!-- JQuery -->
+<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/car_shopping.js}"></script>
+</body>
+</html>
