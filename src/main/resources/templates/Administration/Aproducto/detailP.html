@@ -45,18 +45,28 @@
 						<div>
 							<span>X</span>
 							<div th:replace="controldecantidad :: control_cantidad(1, ${producto.idProducto})">Cantidad</div>
-							<button class="btn btn-danger" id="buttonAddCart">Agregar al Carrito<i class="fa-solid fa-cart-shopping"></i></button>
+						<button id="buttonAddCart" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Agregar al Carrito<i class="fa-solid fa-cart-shopping"></i></button>
 					</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		
+		contextPath = "[[@{/}]]";
+		var crsfHeaderName = "[[${_csrf.headerName}]]";
+		var crsfValue = "[[${_csrf.token}]]";
+		var idProducto = "[[${producto.idProducto}]]";
+		
+	</script>
+	
 	<!-- FOOTER -->
 
 	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
 
-	<div th:replace="~{layouts/Modals :: standard_modal}">Modal
+	<div th:replace="~{layouts/Modals :: standard_modal2}">Modal
 		estandarte</div>
 
 	<!-- Script Bootstrap -->
